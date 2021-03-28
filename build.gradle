@@ -14,10 +14,11 @@ def selenideVersion = "5.19.0",
 allure {
     autoconfigure = true
     aspectjweaver = true
-    version = "$allureVersion"
+    version = allureVersion
+    configuration = "testImplementation"
 
     useJUnit5 {
-        version = "$allureVersion"
+        version = allureVersion
     }
 }
 
