@@ -23,20 +23,19 @@ public class IssueNameLambdaTest extends TestBase {
     @Feature("Issues")
     @DisplayName("Issue '" + ISSUE_NAME + "' should exist in '" + REPOSITORY + "' repository")
     void checkIssueName() {
-        step("Open page " + Configuration.baseUrl, (step) -> {
-            open("/");
-        });
-        step("Search repository '" + REPOSITORY + "'", (step) -> {
-            $("input[name=q]").setValue(REPOSITORY).pressEnter();
-        });
-        step("Click on '" + REPOSITORY + "' repository", (step) -> {
-            $("ul.repo-list").$(byLinkText(REPOSITORY)).click();
-        });
-        step("Go to 'Issues' tab", (step) -> {
-            $("nav[aria-label=Repository]").$(withText("Issues")).click();
-        });
-        step("Check that Issue '" + ISSUE_NAME + "' exists", (step) -> {
-            $("div[aria-label=Issues]").shouldHave(text(ISSUE_NAME));
-        });
+        step("Open page " + Configuration.baseUrl, () ->
+                open(""));
+
+        step("Search repository '" + REPOSITORY + "'", () ->
+                $("input[name=q]").setValue(REPOSITORY).pressEnter());
+
+        step("Click on '" + REPOSITORY + "' repository", () ->
+                $("ul.repo-list").$(byLinkText(REPOSITORY)).click());
+
+        step("Go to 'Issues' tab", () ->
+                $("nav[aria-label=Repository]").$(withText("Issues")).click());
+
+        step("Check that Issue '" + ISSUE_NAME + "' exists", () ->
+                $("div[aria-label=Issues]").shouldHave(text(ISSUE_NAME)));
     }
 }
